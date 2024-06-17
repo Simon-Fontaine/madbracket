@@ -1,4 +1,4 @@
-export default function Home() {
+export default function IndexPage() {
   return (
     <main>
       <h1>MadBracket</h1>
