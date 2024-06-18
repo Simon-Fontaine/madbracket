@@ -26,7 +26,7 @@ function NavigationDesktopComponent() {
                   ? "font-semibold text-foreground"
                   : "text-foreground/60",
               )}
-              target={item.external ? "_blank" : undefined}
+              target={item.external ? "noreferrer" : undefined}
               aria-label={item.title}
             >
               <div className="flex items-center gap-1">

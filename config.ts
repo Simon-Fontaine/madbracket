@@ -27,7 +27,8 @@ interface NavigationItem {
 export const config: Config = {
   name: "MadBracket",
   version: "0.1.0",
-  description: "MadBracket is a bracket-based tournament platform.",
+  description:
+    "Your one-stop shop for all tournament needs. Create, manage, and join tournaments with ease.",
   url: process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
     : "http://localhost:3000",

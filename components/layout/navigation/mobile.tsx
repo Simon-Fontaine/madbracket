@@ -38,7 +38,7 @@ export function NavigationMobileComponent() {
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground",
                 )}
-                target={item.external ? "_blank" : undefined}
+                target={item.external ? "noreferrer" : undefined}
                 aria-label={item.title}
               >
                 <div className="flex items-center gap-1">
