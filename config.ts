@@ -1,3 +1,5 @@
+import { type LucideIcon } from "lucide-react";
+
 interface Author {
   url?: string | URL | undefined;
   name?: string | undefined;
@@ -13,6 +15,15 @@ interface Config {
   authors: Author[];
 }
 
+interface NavigationItem {
+  title: string;
+  href?: string;
+  disabled?: boolean;
+  external?: boolean;
+  icon?: LucideIcon;
+  label?: string;
+}
+
 export const config: Config = {
   name: "MadBracket",
   version: "0.1.0",
@@ -22,7 +33,7 @@ export const config: Config = {
     : "http://localhost:3000",
   links: {
     github: "https://github.com/Simon-Fontaine/madbracket",
-    twitter: "https://twitter.com",
+    twitter: "https://x.com/",
     discord: "https://discord.com",
     privacyPolicy: "/privacy-policy",
     termsOfService: "/terms-of-service",
@@ -36,3 +47,24 @@ export const config: Config = {
     },
   ],
 };
+
+export const navigation: NavigationItem[] = [
+  {
+    title: "Players",
+    href: "/players",
+    disabled: false,
+    external: false,
+  },
+  {
+    title: "Teams",
+    href: "/teams",
+    disabled: false,
+    external: false,
+  },
+  {
+    title: "Tournaments",
+    href: "/tournaments",
+    disabled: false,
+    external: false,
+  },
+];

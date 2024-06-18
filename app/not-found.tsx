@@ -30,7 +30,6 @@ export default function NotFoundPage() {
           Go back
         </Button>
         <Button onClick={() => router.push("/")} size="lg" variant="ghost">
-          <Icons.home className="mr-2 h-4 w-4" />
           Back to Home
         </Button>
       </div>
