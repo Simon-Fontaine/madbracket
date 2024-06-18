@@ -1,9 +1,11 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/toaster";
 import { config } from "@/config";
 import { cn } from "@/lib/utils";
-import { ThemeProvider } from "@/components/theme-provider";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -28,9 +30,10 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          inter.variable
+          inter.variable,
         )}
       >
+        <NextTopLoader />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -38,6 +41,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

@@ -8,11 +8,7 @@ interface Config {
   version: string;
   description: string;
   url: string;
-  links: {
-    github: string;
-    twitter: string;
-    discord: string;
-  };
+  links: Record<string, string>;
   keywords: string[];
   authors: Author[];
 }
@@ -25,14 +21,18 @@ export const config: Config = {
     ? `https://${process.env.VERCEL_URL}`
     : "http://localhost:3000",
   links: {
-    github: "https://github.com",
+    github: "https://github.com/Simon-Fontaine/madbracket",
     twitter: "https://twitter.com",
     discord: "https://discord.com",
+    privacyPolicy: "/privacy-policy",
+    termsOfService: "/terms-of-service",
+    cookiePolicy: "/cookie-policy",
   },
   keywords: ["madbracket", "bracket", "tournament", "platform"],
   authors: [
     {
       name: "Simon Fontaine",
+      url: "https://github.com/Simon-Fontaine",
     },
   ],
 };

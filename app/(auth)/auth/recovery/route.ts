@@ -1,7 +1,6 @@
+import { createClient } from "@/utils/supabase/server";
 import { type EmailOtpType } from "@supabase/supabase-js";
 import { type NextRequest, NextResponse } from "next/server";
-
-import { createClient } from "@/utils/supabase/server";
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
@@ -18,7 +17,7 @@ export async function GET(request: NextRequest) {
 
     if (error) {
       return NextResponse.redirect(
-        `${origin}/reset-password?error=${error.message}`
+        `${origin}/reset-password?error=${error.message}`,
       );
     }
 
@@ -26,6 +25,6 @@ export async function GET(request: NextRequest) {
   }
 
   return NextResponse.redirect(
-    `${origin}/login/update-password?error=Invalid token. Please try again.`
+    `${origin}/login/update-password?error=Invalid token. Please try again.`,
   );
 }
