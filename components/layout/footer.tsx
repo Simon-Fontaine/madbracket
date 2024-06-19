@@ -10,15 +10,21 @@ export function Footer() {
         </p>
       </div>
       <div className="flex items-center justify-center gap-4">
-        <Link href={config.links.privacyPolicy} className="text-sm">
-          Privacy Policy
-        </Link>
-        <Link href={config.links.termsOfService} className="text-sm">
-          Terms of Service
-        </Link>
-        <Link href={config.links.cookiePolicy} className="text-sm">
-          Cookie Policy
-        </Link>
+        {config.privacyPolicy ? (
+          <Link href={config.privacyPolicy} className="text-sm">
+            Privacy Policy
+          </Link>
+        ) : null}
+        {config.termsOfService ? (
+          <Link href={config.termsOfService} className="text-sm">
+            Terms of Service
+          </Link>
+        ) : null}
+        {config.cookiePolicy ? (
+          <Link href={config.cookiePolicy} className="text-sm">
+            Cookie Policy
+          </Link>
+        ) : null}
       </div>
     </footer>
   );

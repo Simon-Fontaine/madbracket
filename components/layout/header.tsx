@@ -1,10 +1,10 @@
 import { NavigationDesktop } from "./navigation/desktop";
 import { NavigationMobile } from "./navigation/mobile";
-import { Icons } from "@/components/icons";
 import AuthButton from "@/components/layout/auth-button";
 import { ModeToggle } from "@/components/theme-toggle";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { config } from "@/config";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export function Header() {
@@ -16,18 +16,24 @@ export function Header() {
         <div className="flex flex-1 items-center justify-end space-x-2">
           <nav className="flex w-auto flex-none items-center">
             <AuthButton />
-            <Link href={config.links.github} target="_blank" rel="noreferrer">
-              <Button variant="ghost">
-                <Icons.github className="h-4 w-4" />
-                <span className="sr-only">GitHub</span>
-              </Button>
-            </Link>
-            <Link href={config.links.twitter} target="_blank" rel="noreferrer">
-              <Button variant="ghost">
-                <Icons.twitter className="h-4 w-4" />
-                <span className="sr-only">Twitter</span>
-              </Button>
-            </Link>
+            {config.socials.map((social, index) =>
+              social.url && !social.disabled ? (
+                <Link
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={cn(buttonVariants({ variant: "ghost" }))}
+                >
+                  {social.icon ? (
+                    <social.icon className="h-4 w-4" />
+                  ) : (
+                    social.name
+                  )}
+                  <span className="sr-only">{social.name}</span>
+                </Link>
+              ) : null,
+            )}
             <ModeToggle />
           </nav>
         </div>

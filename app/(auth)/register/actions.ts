@@ -2,12 +2,11 @@
 
 import { userLoginSchema } from "@/lib/auth";
 import { createClient } from "@/utils/supabase/server";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
-export async function loginUser(
+export async function registerUser(
   prevState: {
     error: string;
+    message: string;
   },
   formData: FormData,
 ) {
@@ -17,20 +16,22 @@ export async function loginUser(
   });
 
   if (!parse.success) {
-    return { error: parse.error.errors[0].message };
+    return { error: parse.error.errors[0].message, message: "" };
   }
 
   const supabase = createClient();
 
-  const { error } = await supabase.auth.signInWithPassword({
+  const { error } = await supabase.auth.signUp({
     email: parse.data.email,
     password: parse.data.password,
   });
 
   if (error) {
-    return { error: error.message };
+    return { error: error.message, message: "" };
   }
 
-  revalidatePath("/", "layout");
-  redirect("/");
+  return {
+    error: "",
+    message: "Check email to continue sign in process.",
+  };
 }
