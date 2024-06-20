@@ -35,6 +35,10 @@ interface NavigationItem {
   label?: string;
 }
 
+interface DashboardNavigationItem extends NavigationItem {
+  icon: LucideIcon;
+}
+
 export const config: Config = {
   name: "MadBracket",
   version: "0.1.0",
@@ -94,5 +98,50 @@ export const navigation: NavigationItem[] = [
     href: "/tournaments",
     disabled: false,
     external: false,
+  },
+];
+
+export const dashboardNavigation: DashboardNavigationItem[] = [
+  {
+    title: "Dashboard",
+    href: "/dashboard",
+    disabled: false,
+    external: false,
+    icon: Icons.home,
+  },
+  {
+    title: "Friends",
+    href: "/dashboard/friends",
+    disabled: false,
+    external: false,
+    icon: Icons.friends,
+  },
+  {
+    title: "Teams",
+    href: "/dashboard/teams",
+    disabled: false,
+    external: false,
+    icon: Icons.teams,
+  },
+  {
+    title: "Tournaments",
+    href: "/dashboard/tournaments",
+    disabled: false,
+    external: false,
+    icon: Icons.tournaments,
+  },
+  {
+    title: "Analytics",
+    href: "/dashboard/analytics",
+    disabled: false,
+    external: false,
+    icon: Icons.analytics,
+  },
+  {
+    title: "Settings",
+    href: "/dashboard/settings",
+    disabled: false,
+    external: false,
+    icon: Icons.settings,
   },
 ];

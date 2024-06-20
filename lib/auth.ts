@@ -24,3 +24,9 @@ export const userUpdatePasswordSchema = z
     message: "Passwords must match",
     path: ["passwordConfirmation"],
   });
+
+export const userAccountDeleteSchema = z.object({
+  confirm: z.string().refine((data) => data === "DELETE", {
+    message: "Please type DELETE to confirm",
+  }),
+});

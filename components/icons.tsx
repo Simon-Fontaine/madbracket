@@ -3,14 +3,19 @@ import {
   ArrowRight,
   ChevronLeft,
   ChevronRight,
+  Contact,
   ExternalLink,
   Home,
+  LineChart,
   Loader2,
   type LucideProps,
   Moon,
   Network,
   PanelLeft,
+  Settings,
+  ShieldHalf,
   Sun,
+  Swords,
 } from "lucide-react";
 
 export const Icons = {
@@ -25,6 +30,11 @@ export const Icons = {
   sun: Sun,
   menu: PanelLeft,
   external: ExternalLink,
+  settings: Settings,
+  analytics: LineChart,
+  friends: Contact,
+  teams: ShieldHalf,
+  tournaments: Swords,
   twitter: (props: LucideProps) => (
     <svg viewBox="0 0 1200 1227" {...props}>
       <path

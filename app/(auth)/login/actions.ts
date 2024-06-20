@@ -8,16 +8,24 @@ import { redirect } from "next/navigation";
 export async function loginUser(
   prevState: {
     error: string;
+    redirectTo: string;
   },
   formData: FormData,
 ) {
+  if (!prevState.redirectTo.startsWith("/")) {
+    prevState.redirectTo = "/dashboard";
+  }
+
   const parse = userLoginSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
   });
 
   if (!parse.success) {
-    return { error: parse.error.errors[0].message };
+    return {
+      error: parse.error.errors[0].message,
+      redirectTo: prevState.redirectTo,
+    };
   }
 
   const supabase = createClient();
@@ -28,9 +36,9 @@ export async function loginUser(
   });
 
   if (error) {
-    return { error: error.message };
+    return { error: error.message, redirectTo: prevState.redirectTo };
   }
 
-  revalidatePath("/", "layout");
-  redirect("/");
+  revalidatePath(prevState.redirectTo, "layout");
+  redirect(prevState.redirectTo);
 }

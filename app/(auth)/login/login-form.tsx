@@ -6,12 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/components/ui/use-toast";
+import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { useFormState, useFormStatus } from "react-dom";
-
-const initialState = {
-  error: "",
-};
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -25,6 +22,14 @@ function SubmitButton() {
 }
 
 export function LoginForm() {
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect_to") || "/dashboard";
+
+  const initialState = {
+    error: "",
+    redirectTo,
+  };
+
   const [state, formAction] = useFormState(loginUser, initialState);
 
   useEffect(() => {
